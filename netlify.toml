@@ -1,0 +1,4 @@
+[build]
+base="souper-douper"
+command="yarn build"
+publish="souper-douper/build/"
