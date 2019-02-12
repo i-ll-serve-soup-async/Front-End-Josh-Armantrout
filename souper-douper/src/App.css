@@ -78,3 +78,34 @@ nav .selected-nav {
 header {
   border: 1px solid #cf0015;
 }
+
+/* Item Card Styles */
+
+.items-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item-card-in-stock {
+  width: 150px;
+  margin: 0 10px 30px;
+}
+
+.item-card-in-stock p {
+  text-align: center;
+  font-size: 1.6rem;
+  margin: 0 0 4px;
+  color: rgb(25, 26, 25);
+  transition: 0.15s ease-in-out;
+}
+
+.item-img-in-stock {
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}

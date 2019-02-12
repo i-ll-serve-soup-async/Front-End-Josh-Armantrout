@@ -5,9 +5,7 @@ const InventoryWrapper = props => {
   return (
     <div>
       <Inventory
-        clearSearch={props.clearSearch}
         history={props.history}
-        onError={props.onError}
         items={props.items}
       />
     </div>
