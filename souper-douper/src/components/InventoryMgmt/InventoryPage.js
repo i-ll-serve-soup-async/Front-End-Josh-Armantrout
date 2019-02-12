@@ -21,9 +21,9 @@ class InventoryPage extends React.Component {
   render() {
     return (
       <div className="inventory-page">
-        {/* <NavBar />
-        <InventoryView /> */}
-        <h2>Inventory Page Goes Here!</h2>
+        <NavBar />
+        {/* <InventoryView />  */}
+        <h2>Inventory Goes Here!</h2>
       </div>
     );
   }

@@ -8,11 +8,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Soup Kitchen App goes Here!</h1>
         <InventoryPage />
       </div>
     );
   }
 }
 
-export default App;
+export default Authentication(App)(Login);
