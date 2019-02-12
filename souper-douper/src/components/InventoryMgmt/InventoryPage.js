@@ -8,6 +8,7 @@ import InventoryView from "./InventoryView";
 import AddInventory from "./AddInventory";
 import Item from "../ItemsList/Item";
 import EditItem from "../ItemsList/EditItem";
+import Inventory from "../InventoryMgmt/Inventory";
 //styles
 
 class InventoryPage extends React.Component {
@@ -18,12 +19,32 @@ class InventoryPage extends React.Component {
     };
   }
 
+  componentDidMount() {
+    let auth = {
+      headers: {
+        authorization: localStorage.getItem("token")
+      }
+    };
+    axios
+      .get("https://soup-kitchen-backend.herokuapp.com/api/items", auth)
+      .then(res => {
+        console.log(res.data);
+        this.setState({ items: res.data.items });
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div className="inventory-page">
         <NavBar />
-        {/* <InventoryView />  */}
-        <h2>Inventory Goes Here!</h2>
+        <Route
+          exact
+          path="/"
+          render={props => (
+            <InventoryView items={this.state.items} {...props} />
+          )}
+        />
       </div>
     );
   }
