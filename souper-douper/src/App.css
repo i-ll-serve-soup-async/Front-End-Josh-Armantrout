@@ -48,6 +48,7 @@ nav .link-styled {
   transition: 0.1s ease-in-out;
   background-color: #c5a173;
   border-radius: 3px;
+  border: 1px solid #cf0015;
 }
 
 nav .link-styled:hover {

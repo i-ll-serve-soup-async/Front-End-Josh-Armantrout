@@ -35,7 +35,7 @@ const NavBar = props => {
             className="link-styled"
             activeClassName="selected-nav"
             exact
-            to="/"
+            to="/add"
           >
             Add
           </NavLink>
