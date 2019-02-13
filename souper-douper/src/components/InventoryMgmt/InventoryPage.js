@@ -5,10 +5,6 @@ import { Route } from "react-router-dom";
 //components
 import NavBar from "../NavBar/NavBar";
 import InventoryView from "./InventoryView";
-import AddInventory from "./AddInventory";
-import Item from "../ItemsList/Item";
-import EditItem from "../ItemsList/EditItem";
-import Inventory from "../InventoryMgmt/Inventory";
 //styles
 
 class InventoryPage extends React.Component {
@@ -42,7 +38,7 @@ class InventoryPage extends React.Component {
           exact
           path="/"
           render={props => (
-            <InventoryView items={this.state.items} {...props} />
+            <InventoryView {...props} items={this.state.items} />
           )}
         />
       </div>
