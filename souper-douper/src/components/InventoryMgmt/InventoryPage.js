@@ -5,6 +5,8 @@ import { Route } from "react-router-dom";
 //components
 import NavBar from "../NavBar/NavBar";
 import InventoryView from "./InventoryView";
+import Item from "../ItemsList/Item";
+import EditItem from "../ItemsList/EditItem";
 //styles
 
 class InventoryPage extends React.Component {
@@ -30,10 +32,15 @@ class InventoryPage extends React.Component {
       .catch(err => console.log(err));
   }
 
+  logUserOut = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
   render() {
     return (
       <div className="inventory-page">
-        <NavBar />
+        <NavBar logUserOut={this.logUserOut} />
         <Route
           exact
           path="/"

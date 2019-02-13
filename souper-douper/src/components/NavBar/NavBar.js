@@ -24,7 +24,7 @@ const NavBar = props => {
         </div>
         <nav>
           <NavLink
-            className="styled-link"
+            className="link-styled"
             activeClassName="selected-nav"
             exact
             to="/"
@@ -32,13 +32,18 @@ const NavBar = props => {
             View
           </NavLink>
           <NavLink
-            className="styled-link"
+            className="link-styled"
             activeClassName="selected-nav"
             exact
             to="/"
           >
             Add
           </NavLink>
+          <a href="/" className="unstyled-link">
+            <button className="logout-button" onClick={props.logUserOut}>
+              Log Out
+            </button>
+          </a>
         </nav>
       </div>
     </header>

@@ -26,37 +26,63 @@ a {
   width: auto;
 }
 
+/* Nav Bar Styles */
+
 nav {
   display: flex;
   margin-left: auto;
 }
 
-nav .styled-link {
+nav a {
+  text-decoration: none;
+}
+
+nav .link-styled {
   margin: 0 10px 0 10px;
   padding: 10px 20px 10px 20px;
   font-size: 1.4rem;
   letter-spacing: 0.05rem;
   font-weight: normal;
-  color: #edeae6;
+  color: black;
   text-decoration: none;
   transition: 0.1s ease-in-out;
   background-color: #c5a173;
   border-radius: 3px;
 }
 
-nav .styled-link:hover {
+nav .link-styled:hover {
   background-color: #cf0015;
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   border: none;
+  color: #edeae6;
+}
+
+.logout-button {
+  margin: 0 10px 0 10px;
+  padding: 10px 20px 10px 20px;
+  font-size: 1.4rem;
+  letter-spacing: 0.05rem;
+  font-weight: normal;
   color: black;
+  text-decoration: none;
+  transition: 0.15s ease-in-out;
+  background-color: #c5a173;
+  border: 1px solid #cf0015;
+  border-radius: 3px;
+}
+
+.logout-button:hover {
+  color: #edeae6;
+  background-color: #cf0015;
 }
 
 nav .selected-nav {
   background-color: #cf0015;
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   border: none;
-  color: black;
+  color: #edeae6;
 }
+
 .nav-wrapper {
   max-width: 1100px;
   height: 100px;
