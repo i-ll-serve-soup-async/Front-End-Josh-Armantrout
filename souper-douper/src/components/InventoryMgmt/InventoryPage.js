@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import InventoryView from "./InventoryView";
 import AddInventory from "./AddInventory";
+import defaultimg from "../../images/item-default.png";
 import Item from "../ItemsList/Item";
 import EditItem from "../ItemsList/EditItem";
 //styles
@@ -32,7 +33,7 @@ class InventoryPage extends React.Component {
       })
       .catch(err => console.log(err));
   }
-  // pass below function to AddInventory.js as addNewItem on props
+  // pass below function to AddInventory.js on props
   addItemHandler = e => {
     e.preventDefault();
     let newItem = {
@@ -50,16 +51,69 @@ class InventoryPage extends React.Component {
     axios
       .post(
         "https://soup-kitchen-backend.herokuapp.com/api/items",
-        newItem,
-        auth
+        auth,
+        newItem
       )
       .then(res => {
+        console.log(res.data);
         this.setState({ items: res.data.items });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        alert("Unable to add New Item");
+        console.log(err);
+      });
     e.target.reset();
   };
 
+  //pass below functions to Item.js on props
+  deleteItem = (e, itemID, history) => {
+    e.preventDefault();
+    let auth = {
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
+    };
+    axios
+      .delete(
+        `https://soup-kitchen-backend.herokuapp.com/api/items/${itemID}`,
+        auth
+      )
+      .then(res => {
+        axios
+          .get("https://soup-kitchen-backend.herokuapp.com/api/items", auth)
+          .then(res => {
+            this.setState({ items: res.data.items });
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        history.push("/");
+      })
+      .catch(err => console.log(err));
+  };
+
+  // this will add a default image if a user doesn't submit an img url in the Add Item Form
+  addItemDefaultImg = e => {
+    e.target.src = { defaultimg };
+  };
+
+  setInventoryState = () => {
+    let auth = {
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
+    };
+    axios
+      .get("https://soup-kitchen-backend.herokuapp.com/api/items", auth)
+      .then(res => {
+        this.setState({ items: res.data.items });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  // attached to LogOut button in NavBar
   logUserOut = () => {
     localStorage.clear();
     window.location.reload();
@@ -73,13 +127,40 @@ class InventoryPage extends React.Component {
           exact
           path="/"
           render={props => (
-            <InventoryView {...props} items={this.state.items} />
+            <InventoryView
+              {...props}
+              items={this.state.items}
+              onImgError={this.addItemDefaultImg}
+            />
           )}
         />
         <Route
           path="/add"
           render={props => (
-            <AddInventory {...props} addNewItem={this.addItemHandler} />
+            <AddInventory addItemHandler={this.addItemHandler} {...props} />
+          )}
+        />
+        <Route
+          path="/inventory/:id"
+          render={props => (
+            <Item
+              {...props}
+              updateHandler={this.setInventoryState}
+              onImgError={this.addItemDefaultImg}
+              items={this.state.items}
+              updateItem={this.updateItem}
+              deleteItem={this.deleteItem}
+            />
+          )}
+        />
+        <Route
+          path="/inventory/edit"
+          render={props => (
+            <EditItem
+              {...props}
+              updateHandler={this.setInventoryState}
+              items={this.state.items}
+            />
           )}
         />
       </div>

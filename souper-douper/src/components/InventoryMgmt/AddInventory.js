@@ -42,7 +42,7 @@ class AddInventory extends React.Component {
         <form
           className="add-item-form"
           onSubmit={e =>
-            this.props.addNewItem(e, this.state.selectedCategory.value)
+            this.props.addItemHandler(e, this.state.selectedCategory.value)
           }
         >
           <label>Item Name:</label>
