@@ -38,9 +38,9 @@ class AddInventory extends React.Component {
       label: cat.name
     }));
     return (
-      <div className="add-item-container">
+      <div className="item-container add">
         <form
-          className="add-item-form"
+          className="item-form add"
           onSubmit={e =>
             this.props.addItemHandler(e, this.state.selectedCategory.value)
           }

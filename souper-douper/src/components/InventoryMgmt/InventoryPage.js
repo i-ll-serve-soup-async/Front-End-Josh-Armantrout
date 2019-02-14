@@ -62,7 +62,7 @@ class InventoryPage extends React.Component {
         alert("Unable to add New Item");
         console.log(err);
       });
-    e.target.reset();
+    // e.target.reset();
   };
 
   //pass below functions to Item.js on props
