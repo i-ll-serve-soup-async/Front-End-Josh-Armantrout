@@ -72,7 +72,7 @@ class Item extends React.Component {
 
   render() {
     let item = this.props.items.find(
-      thing => `${thing.id}` === this.props.match.params.id
+      banana => `${banana.id}` === this.props.match.params.id
     );
     if (!item) {
       return <div />;

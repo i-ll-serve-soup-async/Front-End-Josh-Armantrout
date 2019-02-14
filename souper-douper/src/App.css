@@ -120,19 +120,28 @@ header {
 .item-card-in-stock {
   width: 150px;
   margin: 0 10px 30px;
+  border: 1px solid #edeae6;
+  border-radius: 5px;
+  background-color: #c5a173;
 }
 
 .item-card-in-stock p {
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin: 0 0 4px;
-  color: rgb(25, 26, 25);
+  color: black;
   transition: 0.15s ease-in-out;
 }
 
 .item-img-in-stock {
   width: 100%;
-  border-radius: 5px;
+  height: 125px;
+  border-radius: 5px 5px 0 0;
   cursor: pointer;
   transition: 0.15s ease-in-out;
+}
+
+.item-text-blurb {
+  border-radius: 0 0 5px 5px;
+  width: 150px;
 }
