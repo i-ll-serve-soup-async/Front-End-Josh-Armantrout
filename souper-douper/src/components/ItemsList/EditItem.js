@@ -14,8 +14,8 @@ class EditItem extends React.Component {
         imageURL: "",
         categoryID: ""
       },
-      selectedCategory: null,
-      categories: []
+      categories: [],
+      selectedCategory: null
     };
   }
 
@@ -54,7 +54,7 @@ class EditItem extends React.Component {
   };
 
   categorySelectHandler = selectedCategory => {
-    this.setState({ selectedCategory: selectedCategory });
+    this.setState({ selectedCategory });
   };
 
   updateItemHandler = () => {
@@ -92,9 +92,9 @@ class EditItem extends React.Component {
   };
 
   render() {
-    const categoryOptions = this.state.categories.map(foobar => ({
-      value: foobar.id,
-      label: foobar.name
+    const itemCategories = this.state.categories.map(cat => ({
+      value: cat.id,
+      label: cat.name
     }));
     return (
       <div className="form-container edit">
@@ -145,7 +145,7 @@ class EditItem extends React.Component {
             menuPlacement="top"
             value={this.state.selectedCategory}
             onChange={this.categorySelectHandler}
-            options={categoryOptions}
+            options={itemCategories}
           />
           <div className="form-entry" />
           <button className="edit-button" onClick={this.clickHandler}>

@@ -1,7 +1,7 @@
 import React from "react";
 import Inventory from "./Inventory";
 
-const InventoryWrapper = props => {
+const InventoryView = props => {
   return (
     <div>
       <Inventory
@@ -13,4 +13,4 @@ const InventoryWrapper = props => {
   );
 };
 
-export default InventoryWrapper;
+export default InventoryView;

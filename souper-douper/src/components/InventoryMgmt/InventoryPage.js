@@ -34,14 +34,14 @@ class InventoryPage extends React.Component {
       .catch(err => console.log(err));
   }
   // pass below function to AddInventory.js on props
-  addItemHandler = e => {
+  addItem = (e, categoryID) => {
     e.preventDefault();
     let newItem = {
       name: e.target[0].value,
       amount: parseInt(e.target[1].value),
       unit: e.target[2].value,
       imageUrl: e.target[3].value,
-      categoryID: e.target[4].value
+      categoryID: parseInt(categoryID)
     };
     let auth = {
       headers: {
@@ -56,13 +56,25 @@ class InventoryPage extends React.Component {
       )
       .then(res => {
         console.log(res.data);
-        this.setState({ items: res.data.items });
+        let auth = {
+          headers: {
+            Authorization: localStorage.getItem("token")
+          }
+        };
+        axios
+          .get("https://soup-kitchen-backend.herokuapp.com/api/items", auth)
+          .then(res => {
+            this.setState({ items: res.data.items });
+          })
+          .catch(err => {
+            console.log(err);
+          });
       })
       .catch(err => {
         alert("Unable to add New Item");
         console.log(err);
       });
-    // e.target.reset();
+    e.target.reset();
   };
 
   //pass below functions to Item.js on props
@@ -97,6 +109,7 @@ class InventoryPage extends React.Component {
     e.target.src = { defaultimg };
   };
 
+  // this will update the inventory page to reflect changes in state made when updating items using increment/decrement or using the update item form
   setInventoryState = () => {
     let auth = {
       headers: {
@@ -130,15 +143,13 @@ class InventoryPage extends React.Component {
             <InventoryView
               {...props}
               items={this.state.items}
-              onImgError={this.addItemDefaultImg}
+              onError={this.addItemDefaultImg}
             />
           )}
         />
         <Route
           path="/add"
-          render={props => (
-            <AddInventory addItemHandler={this.addItemHandler} {...props} />
-          )}
+          render={props => <AddInventory {...props} addItem={this.addItem} />}
         />
         <Route
           path="/inventory/:id"
@@ -146,10 +157,10 @@ class InventoryPage extends React.Component {
             <Item
               {...props}
               updateHandler={this.setInventoryState}
-              onImgError={this.addItemDefaultImg}
               items={this.state.items}
               updateItem={this.updateItem}
               deleteItem={this.deleteItem}
+              onError={this.addItemDefaultImg}
             />
           )}
         />

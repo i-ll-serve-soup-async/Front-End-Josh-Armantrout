@@ -6,8 +6,8 @@ class AddInventory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedCategory: null,
-      categories: []
+      categories: [],
+      selectedCategory: null
     };
   }
 
@@ -29,7 +29,7 @@ class AddInventory extends React.Component {
   }
 
   categorySelectHandler = selectedCategory => {
-    this.setState({ selectedCategory: selectedCategory });
+    this.setState({ selectedCategory });
   };
 
   render() {
@@ -42,7 +42,7 @@ class AddInventory extends React.Component {
         <form
           className="item-form add"
           onSubmit={e =>
-            this.props.addItemHandler(e, this.state.selectedCategory.value)
+            this.props.addItem(e, this.state.selectedCategory.value)
           }
         >
           <label>Item Name:</label>
