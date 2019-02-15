@@ -1,8 +1,8 @@
 import React from "react";
 import souperdoupertall from "../../images/souper-douper-lg.png";
-import background from "../../images/background.jpeg";
+// import background from "../../images/background.jpg";
 
-// import "../Login.css";
+import "./Login.css";
 
 class Login extends React.Component {
   constructor(props) {
@@ -19,10 +19,7 @@ class Login extends React.Component {
   };
   render() {
     return (
-      <div
-        className="login-wrapper"
-        style={{ backgroundImage: `url(${background})` }}
-      >
+      <div className="login-wrapper">
         <div className="form-wrapper">
           {this.state.activeForm === "login" ? (
             <div className="login-form-container">

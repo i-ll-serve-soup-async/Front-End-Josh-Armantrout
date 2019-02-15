@@ -6,15 +6,15 @@ class AddInventory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedCategory: null,
-      categories: []
+      categories: [],
+      selectedCategory: null
     };
   }
 
   componentDidMount() {
     let auth = {
       headers: {
-        authorization: localStorage.getItem("token")
+        Authorization: localStorage.getItem("token")
       }
     };
     axios
@@ -29,21 +29,18 @@ class AddInventory extends React.Component {
   }
 
   categorySelectHandler = selectedCategory => {
-    this.setState({ selectedCategory: selectedCategory });
+    this.setState({ selectedCategory });
   };
 
   render() {
     const itemCategories = this.state.categories.map(cat => ({
-      value: cat.id,
       label: cat.name
     }));
     return (
-      <div className="add-item-container">
+      <div className="form-container add">
         <form
-          className="add-item-form"
-          onSubmit={e =>
-            this.props.addNewItem(e, this.state.selectedCategory.value)
-          }
+          className="item-form add"
+          onSubmit={e => this.props.addItem(e, this.state.selectedCategory)}
         >
           <label>Item Name:</label>
           <input className="item-input" type="text" placeholder="name" />
@@ -57,8 +54,8 @@ class AddInventory extends React.Component {
           <Select
             className="select"
             menuPlacement="top"
-            value={this.state.selectedOption}
-            onChange={this.handleChange}
+            value={this.state.selectedCategory}
+            onChange={this.categorySelectHandler}
             options={itemCategories}
           />
           <input

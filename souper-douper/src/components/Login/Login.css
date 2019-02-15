@@ -1,0 +1,80 @@
+.login-wrapper {
+  background: url(../../images/background.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 86vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 14vh;
+}
+
+.form-wrapper {
+  max-width: 349px;
+  width: 100%;
+}
+
+.login-form-container {
+  margin: 30px 0 0 0;
+  width: 100%;
+  height: 550px;
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  box-shadow: 0 0 30px black;
+}
+
+.register-form-container {
+  margin: 30px 0 0 0;
+  width: 100%;
+  height: 650px;
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  box-shadow: 0 0 30px black;
+}
+
+.login-img {
+  width: 54%;
+  margin: 21px auto;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin: 6px 10%;
+}
+
+input {
+  height: 33px;
+  margin: 0 0 7px 0;
+  padding: 0 0 0 9px;
+  border: 1px solid #edecec;
+  background: #f9f9f9;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.login-button {
+  height: 32px;
+  background: #cf0015;
+  color: #fff;
+  opacity: 0.75;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.redirect-button {
+  color: #cf0015;
+  border-radius: 5px;
+  border: none;
+  background-color: white;
+  padding: 10px;
+  margin-top: 20px;
+}
