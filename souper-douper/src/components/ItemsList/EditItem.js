@@ -80,7 +80,7 @@ class EditItem extends React.Component {
         auth
       )
       .then(res => {
-        this.props.handleUpdate();
+        this.props.updateHandler();
         this.props.history.push("/");
       })
       .catch(err => console.log(err));

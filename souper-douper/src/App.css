@@ -49,7 +49,7 @@ nav .link-styled {
   text-decoration: none;
   transition: 0.1s ease-in-out;
   background-color: #c5a173;
-  border-radius: 3px;
+  border-radius: 5px;
   border: 1px solid #cf0015;
 }
 
@@ -106,6 +106,7 @@ nav .selected-nav {
 
 header {
   border: 1px solid #cf0015;
+  background-color: #ffffff;
 }
 
 /* Item Card Styles */
@@ -122,7 +123,7 @@ header {
 .item-card-in-stock {
   width: 150px;
   margin: 0 10px 30px;
-  border: 1px solid #edeae6;
+  border: 1px solid #181c16;
   border-radius: 5px;
   background-color: #c5a173;
 }
@@ -131,7 +132,7 @@ header {
   text-align: center;
   font-size: 1.4rem;
   margin: 0 0 4px;
-  color: black;
+  color: #181c16;
   transition: 0.15s ease-in-out;
 }
 
@@ -139,6 +140,7 @@ header {
   width: 100%;
   height: 125px;
   border-radius: 5px 5px 0 0;
+  border-bottom: 1px solid #181c16;
   cursor: pointer;
   transition: 0.15s ease-in-out;
 }
@@ -174,15 +176,16 @@ header {
   margin: 10px;
   border: none;
   padding: 10px;
-  border-radius: 3px;
+  border-radius: 5px;
   font-size: 1.2rem;
 }
 
 .item-input[type="submit"] {
+  height: 50px;
   font-size: 1.2rem;
   padding: 15px 15px;
   background: #cf0015;
-  color: black;
+  color: #181c16;
   border: 0 none;
   cursor: pointer;
   border-radius: 5px;
@@ -202,7 +205,7 @@ label {
   margin: 9px;
   padding: 15px 10px;
   background: #cf0015;
-  color: black;
+  color: #181c16;
   border: 0 none;
   cursor: pointer;
   border-radius: 5px;
@@ -245,7 +248,7 @@ label {
   font-weight: bold;
   letter-spacing: 0.7px;
   transition: 0.1s ease-in-out;
-  color: black;
+  color: #181c16;
   background-color: #c5a173;
   border: 1px solid #cf0015;
 }
@@ -260,7 +263,7 @@ label {
   height: 50px;
   padding: 0 20px;
   border-radius: 5px;
-  color: black;
+  color: #181c16;
   background-color: #c5a173;
   border: 1px solid #cf0015;
   text-transform: uppercase;
@@ -310,5 +313,5 @@ label {
   width: 400px;
   height: auto;
   border-radius: 50%;
-  border: 1px solid rgb(185, 185, 185);
+  border: 1px solid#181c16;
 }

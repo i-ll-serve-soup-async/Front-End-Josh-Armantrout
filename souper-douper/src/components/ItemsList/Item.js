@@ -81,11 +81,7 @@ class Item extends React.Component {
       <div className="item-container">
         <div className="item-header">
           <div className="image-wrapper">
-            <img
-              onError={this.props.onError}
-              src={item.imageURL}
-              alt={item.name}
-            />
+            <img src={item.imageURL} alt={item.name} />
           </div>
           <div className="item-title-wrapper">
             <h2>{item.name}</h2>

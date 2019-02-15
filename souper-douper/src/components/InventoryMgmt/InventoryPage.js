@@ -8,8 +8,6 @@ import InventoryView from "./InventoryView";
 import AddInventory from "./AddInventory";
 import Item from "../ItemsList/Item";
 import EditItem from "../ItemsList/EditItem";
-//styles
-import defaultimg from "../../images/item-default.png";
 
 class InventoryPage extends React.Component {
   constructor(props) {
@@ -56,7 +54,7 @@ class InventoryPage extends React.Component {
         newItem,
         auth
       )
-      .then(response => {
+      .then(res => {
         let auth = {
           headers: {
             Authorization: localStorage.getItem("token")
@@ -64,14 +62,15 @@ class InventoryPage extends React.Component {
         };
         axios
           .get("https://soup-kitchen-backend.herokuapp.com/api/items", auth)
-          .then(response => {
-            this.setState({ items: response.data.items });
+          .then(res => {
+            this.setState({ items: res.data.items });
           })
           .catch(err => {
             console.log(err);
           });
       })
       .catch(err => {
+        alert("No new Item for YOU, SUCKER!!!");
         console.log(err);
       });
     e.target.reset();
@@ -102,11 +101,6 @@ class InventoryPage extends React.Component {
         history.push("/");
       })
       .catch(err => console.log(err));
-  };
-
-  // this will add a default image if a user doesn't submit an img url in the Add Item Form
-  addItemDefaultImg = e => {
-    e.target.src = { defaultimg };
   };
 
   // this will update the inventory page to reflect changes in state made when updating items using increment/decrement or using the update item form
@@ -140,11 +134,7 @@ class InventoryPage extends React.Component {
           exact
           path="/"
           render={props => (
-            <InventoryView
-              {...props}
-              items={this.state.items}
-              onError={this.addItemDefaultImg}
-            />
+            <InventoryView {...props} items={this.state.items} />
           )}
         />
         <Route
@@ -156,11 +146,10 @@ class InventoryPage extends React.Component {
           render={props => (
             <Item
               {...props}
-              updateHandler={this.setInventoryState}
               items={this.state.items}
               updateItem={this.updateItem}
               deleteItem={this.deleteItem}
-              onError={this.addItemDefaultImg}
+              updateHandler={this.setInventoryState}
             />
           )}
         />
@@ -169,8 +158,8 @@ class InventoryPage extends React.Component {
           render={props => (
             <EditItem
               {...props}
-              updateHandler={this.setInventoryState}
               items={this.state.items}
+              updateHandler={this.setInventoryState}
             />
           )}
         />

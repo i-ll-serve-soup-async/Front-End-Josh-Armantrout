@@ -4,11 +4,7 @@ import Inventory from "./Inventory";
 const InventoryView = props => {
   return (
     <div>
-      <Inventory
-        history={props.history}
-        onImgError={props.onImgError}
-        items={props.items}
-      />
+      <Inventory history={props.history} items={props.items} />
     </div>
   );
 };
