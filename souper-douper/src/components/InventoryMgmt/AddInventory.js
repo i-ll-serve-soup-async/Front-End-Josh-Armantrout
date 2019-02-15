@@ -14,7 +14,7 @@ class AddInventory extends React.Component {
   componentDidMount() {
     let auth = {
       headers: {
-        authorization: localStorage.getItem("token")
+        Authorization: localStorage.getItem("token")
       }
     };
     axios
@@ -38,7 +38,7 @@ class AddInventory extends React.Component {
       label: cat.name
     }));
     return (
-      <div className="item-container add">
+      <div className="form-container add">
         <form
           className="item-form add"
           onSubmit={e =>

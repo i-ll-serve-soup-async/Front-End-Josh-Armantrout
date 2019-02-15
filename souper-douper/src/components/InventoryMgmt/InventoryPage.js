@@ -6,16 +6,17 @@ import { Route } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import InventoryView from "./InventoryView";
 import AddInventory from "./AddInventory";
-import defaultimg from "../../images/item-default.png";
 import Item from "../ItemsList/Item";
 import EditItem from "../ItemsList/EditItem";
 //styles
+import defaultimg from "../../images/item-default.png";
 
 class InventoryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      items: [],
+      token: null
     };
   }
 
@@ -33,6 +34,7 @@ class InventoryPage extends React.Component {
       })
       .catch(err => console.log(err));
   }
+
   // pass below function to AddInventory.js on props
   addItem = (e, categoryID) => {
     e.preventDefault();
@@ -51,11 +53,10 @@ class InventoryPage extends React.Component {
     axios
       .post(
         "https://soup-kitchen-backend.herokuapp.com/api/items",
-        auth,
-        newItem
+        newItem,
+        auth
       )
-      .then(res => {
-        console.log(res.data);
+      .then(response => {
         let auth = {
           headers: {
             Authorization: localStorage.getItem("token")
@@ -63,15 +64,14 @@ class InventoryPage extends React.Component {
         };
         axios
           .get("https://soup-kitchen-backend.herokuapp.com/api/items", auth)
-          .then(res => {
-            this.setState({ items: res.data.items });
+          .then(response => {
+            this.setState({ items: response.data.items });
           })
           .catch(err => {
             console.log(err);
           });
       })
       .catch(err => {
-        alert("Unable to add New Item");
         console.log(err);
       });
     e.target.reset();

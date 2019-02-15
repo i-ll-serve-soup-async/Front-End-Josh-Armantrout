@@ -60,7 +60,7 @@ class EditItem extends React.Component {
   updateItemHandler = () => {
     let auth = {
       headers: {
-        authorization: localStorage.getItem("token")
+        Authorization: localStorage.getItem("token")
       }
     };
     let categoryID = this.state.selectedCategory

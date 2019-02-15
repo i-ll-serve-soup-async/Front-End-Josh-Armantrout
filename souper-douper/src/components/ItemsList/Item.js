@@ -100,7 +100,6 @@ class Item extends React.Component {
                 -
               </button>
             </div>
-            <h4>Category ID: {item.categoryID}</h4>
           </div>
         </div>
         <div className="button-wrapper">
