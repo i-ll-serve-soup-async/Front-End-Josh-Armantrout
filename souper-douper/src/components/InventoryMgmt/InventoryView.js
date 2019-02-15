@@ -1,17 +1,12 @@
 import React from "react";
 import Inventory from "./Inventory";
 
-const InventoryWrapper = props => {
+const InventoryView = props => {
   return (
     <div>
-      <Inventory
-        clearSearch={props.clearSearch}
-        history={props.history}
-        onError={props.onError}
-        items={props.items}
-      />
+      <Inventory history={props.history} items={props.items} />
     </div>
   );
 };
 
-export default InventoryWrapper;
+export default InventoryView;

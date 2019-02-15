@@ -1,13 +1,22 @@
 import React from "react";
 
 const Inventory = props => {
+  const routeToItem = (e, item) => {
+    e.preventDefault();
+    props.history.push(`/inventory/${item.id}`);
+  };
   return (
     <div className="items-container">
       {props.items.map(item => (
-        <div className="item-card-in-stock">
+        <div
+          onClick={e => {
+            routeToItem(e, item);
+          }}
+          className="item-card-in-stock"
+          key={item.id}
+        >
           <img
             className="item-img-in-stock"
-            onError={props.onError}
             src={item.imageURL}
             alt={item.name}
           />
